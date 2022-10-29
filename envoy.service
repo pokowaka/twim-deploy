@@ -1,0 +1,18 @@
+[Unit]
+Description=twim-www
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker stop twim-www
+ExecStartPre=-/usr/bin/docker rm twim-www
+ExecStartPre=/var/twim-deploy/setup.sh
+ExecStart=/usr/local/bin/systemd-docker --cgroups name=systemd run --rm --name twim-www envoy:twim
+Restart=always
+RestartSec=10s
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target

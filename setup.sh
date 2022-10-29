@@ -1,6 +1,5 @@
 #!/bin/bash
-# git secret reveal
-set -x
+git secret reveal
 cp secrets/env-docker-prod backend/
 source secrets/env-docker-prod
 export SERVER_PORT=8000
