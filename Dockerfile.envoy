@@ -1,0 +1,8 @@
+FROM envoyproxy/envoy:v1.23-latest
+# Setup certs.
+RUN mkdir -p /etc/certs
+COPY certs/ /etc/certs
+
+COPY envoy.yaml /etc/envoy/envoy.yaml
+RUN chmod go+r /etc/envoy/envoy.yaml
+
