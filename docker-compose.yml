@@ -30,6 +30,9 @@ services:
       - 9200:9200
     networks:
       - backend
+    expose:
+      - "9200"
+
 
   kibana:
     container_name: mbt-kibana

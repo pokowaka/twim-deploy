@@ -1,7 +1,9 @@
 #!/bin/bash
-git secret reveal
+CURR_DIR=$PWD
+SCRIPT_DIR=$(dirname "$0")
+cd $SCRIPT_DIR
+
+# git secret reveal (Should have been run..)
 cp secrets/env-docker-prod backend/
 source secrets/env-docker-prod
-export SERVER_PORT=8000
-export COMPOSE_PROJECT_NAME=twim_guide_backend
-docker-compose up --build
+docker-compose --build --remove-orphans

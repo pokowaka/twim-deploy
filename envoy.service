@@ -7,7 +7,7 @@ Requires=docker.service
 TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker stop twim-www
 ExecStartPre=-/usr/bin/docker rm twim-www
-ExecStartPre=/var/twim-deploy/setup.sh
+ExecStartPre=/var/twim-deploy/envoy.sh
 ExecStart=/usr/local/bin/systemd-docker --cgroups name=systemd run --rm --name twim-www envoy:twim
 Restart=always
 RestartSec=10s
